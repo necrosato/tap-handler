@@ -188,7 +188,16 @@ void handleSet()
     handle2.ibu_ = server.arg("ibu-2").toDouble();
     message += "    ibu-2: " + server.arg("ibu-2") + "\n";
   }
-
+  if (server.hasArg("flow-1") && server.arg("flow-1") != "")
+  {
+    handle1.flowRate_ = server.arg("flow-1").toDouble() / 1000;
+    message += "    flow-1: " + server.arg("flow-1") + "\n";
+  }
+  if (server.hasArg("flow-2") && server.arg("flow-2") != "")
+  {
+    handle2.flowRate_ = server.arg("flow-2").toDouble() / 1000;
+    message += "    flow-2: " + server.arg("flow-2") + "\n";
+  }
   server.send(200, "text/html", setHtml);
   Serial.println(message);
 }
@@ -240,7 +249,7 @@ void updateHandles()
   {
     delay(delayTime);
     // Actuall etime is greater due to display updates
-    double delayConstant = 1.15;
+    double delayConstant = 1.20;
     h1 = updateHandle(delayTime*delayConstant, handle1, display1);
     h2 = updateHandle(delayTime*delayConstant, handle2, display2);
     if (!h1)
