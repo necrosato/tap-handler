@@ -240,7 +240,7 @@ void updateHandles()
   {
     delay(delayTime);
     // Actuall etime is greater due to display updates
-    double delayConstant = 1.20;
+    double delayConstant = 1.15;
     h1 = updateHandle(delayTime*delayConstant, handle1, display1);
     h2 = updateHandle(delayTime*delayConstant, handle2, display2);
     if (!h1)
